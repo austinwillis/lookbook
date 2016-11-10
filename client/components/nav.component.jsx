@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class NavBar extends Component {
   render() {
     return (
-      <div id="navContainer" className="ui large secondary network menu">
+      <div id="navContainer" className="ui large secondary network stackable menu">
         <div className="item">
           <div className="ui logo shape">
             <div className="sides">
@@ -16,7 +16,7 @@ export default class NavBar extends Component {
         <a className="view-ui item">
           <i className="sidebar icon"></i>
         </a>
-        <div className="right menu">
+        <div className="right stackable pointing menu">
           <a className="active item">
             Home
           </a>

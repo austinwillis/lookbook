@@ -12,10 +12,10 @@ export default class PictureList extends Component {
       array.push(i);
     }
     return (
-      <div className="ui grid">
+      <div className="ui four column doubling grid">
         {array.map(each => {
           return (
-            <div className="four wide column">
+            <div className="column">
               <img className="ui image" src={image}></img>
             </div>
           );

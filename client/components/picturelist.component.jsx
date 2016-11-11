@@ -18,7 +18,7 @@ export default class PictureList extends Component {
         {array.map(each => {
           return (
             <div className="column" key={each.toString()}>
-              <Picture imageUrl={image} />
+              <Picture imageUrl={image} saved={each % 2} />
             </div>
           );
         })}

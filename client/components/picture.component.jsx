@@ -19,7 +19,7 @@ export default class Picture extends Component {
 
   render() {
     return (
-      <div className="picture-container">
+      <div className="picture-container" onDoubleClick={this.toggleSaved.bind(this)}>
         <img className="ui image large rounded" src={this.props.imageUrl} />
         <i className={this.state.saved ? "active star icon" : "star icon"} onClick={this.toggleSaved.bind(this)}/>
       </div>

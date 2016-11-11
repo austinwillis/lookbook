@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Picture from './picture.component';
+
 export default class PictureList extends Component {
   constructor(props) {
     super(props);
@@ -12,11 +14,11 @@ export default class PictureList extends Component {
       array.push(i);
     }
     return (
-      <div className="ui four column doubling grid">
+      <div className="ui container four column doubling grid">
         {array.map(each => {
           return (
-            <div className="column">
-              <img className="ui image" src={image}></img>
+            <div className="column" key={each.toString()}>
+              <Picture imageUrl={image} />
             </div>
           );
         })}

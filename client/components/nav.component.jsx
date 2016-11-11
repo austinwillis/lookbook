@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 
+import { Link } from 'react-router';
+
 export default class NavBar extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div id="navContainer" className="ui large secondary network stackable menu">
@@ -17,15 +23,15 @@ export default class NavBar extends Component {
           <i className="sidebar icon"></i>
         </a>
         <div className="right stackable pointing menu">
-          <a className="active item">
+          <Link className={this.props.location.pathname === "/" ? "active item" : "item"} to={'/'}>
             Home
-          </a>
-          <a className="item">
+          </Link>
+          <Link className={this.props.location.pathname === "/about" ? "active item" : "item"} to={'/about'}>
             About
-          </a>
-          <a className="item">
+          </Link>
+          <Link className={this.props.location.pathname === "/contact" ? "active item" : "item"} to={'/contact'}>
             Contact
-          </a>
+          </Link>
         </div>
       </div>
     )

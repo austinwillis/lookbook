@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { Link } from 'react-router';
+import AccountsUIWrapper from './accountswrapper.component.jsx';
 
 export default class NavBar extends Component {
   constructor(props) {
@@ -22,6 +23,7 @@ export default class NavBar extends Component {
         <a className="view-ui item">
           <i className="sidebar icon"></i>
         </a>
+        <AccountsUIWrapper />
         <div className="right stackable pointing menu">
           <Link className={this.props.location.pathname === "/" ? "active item" : "item"} to={'/'}>
             Home

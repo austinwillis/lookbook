@@ -30,6 +30,7 @@ class PictureList extends Component {
         }
       });
     });
+    console.log(this.props.pictures);
   }
 
   toggleButton() {
@@ -95,7 +96,7 @@ export default createContainer(() => {
 
   return {
     favorites: Favorites.find({}).fetch(),
-    pictures: Pictures.find({}).fetch(),
+    pictures: Pictures.find({}, {sort: {created: -1}}).fetch(),
     currentUser: Meteor.user()
   };
 }, PictureList);

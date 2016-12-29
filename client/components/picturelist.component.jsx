@@ -2,9 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Pictures } from '../../imports/api/pictures.js';
 import { createContainer } from 'meteor/react-meteor-data';
+import Modal from 'react-awesome-modal';
+
 import Picture from './picture.component';
 import { Favorites } from '../../imports/api/favorites.js';
-import PicModal from './picmodal.component';
 
 class PictureList extends Component {
   constructor(props) {
@@ -12,13 +13,26 @@ class PictureList extends Component {
   }
 
   componentWillMount() {
-    this.state = { favorites: false };
+    this.state = { favorites: false, modalVisible: false, pic: { url: 'none' } };
   }
 
   toggleFavorites() {
     this.setState(prevState => ({
       favorites: !prevState.favorites
     }));
+  }
+
+  openModal(pic) {
+    this.setState({
+      modalVisible: true,
+      pic: pic
+    });
+  }
+
+  closeModal() {
+    this.setState({
+      modalVisible: false
+    });
   }
 
   markFavorites() {
@@ -30,7 +44,6 @@ class PictureList extends Component {
         }
       });
     });
-    console.log(this.props.pictures);
   }
 
   toggleButton() {
@@ -58,7 +71,7 @@ class PictureList extends Component {
 
   pictureDiv(pic) {
     return (
-      <div className="column" key={pic._id}>
+      <div onClick={() => this.openModal(pic)} className="column" key={pic._id}>
         <Picture image={pic} favorite={pic.favorite} />
       </div>
     );
@@ -78,6 +91,15 @@ class PictureList extends Component {
     this.markFavorites();
     return (
       <div>
+        <Modal
+            visible={this.state.modalVisible}
+            effect="fadeInUp"
+            onClickAway={() => this.closeModal()}
+        >
+          <div>
+            <Picture image={this.state.pic} favorite={this.state.pic.favorite} />
+          </div>
+        </Modal>
         {this.toggleButton()}
         {this.state.favorites ? this.renderFavoritePictures() : this.renderAllPictures()}
       </div>

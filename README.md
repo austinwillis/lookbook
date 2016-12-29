@@ -1,3 +1,1 @@
-# Update Scripts
-
-[lookbookScripts](https://github.com/austinwillis/lookbookScripts)
+# [Update Scripts](https://github.com/austinwillis/lookbookScripts)
